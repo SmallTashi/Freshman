@@ -1,3 +1,17 @@
 <resources>
     <string name="app_name">Freshman</string>
+    <string name="essential_string_introduce">功能介绍</string>
+    <string name="essential_string_title">入学必备</string>
+    <string name="essential_string_title_edit">编辑</string>
+    <string name="essential_intro_string_one">1.文本框右侧【箭头】查看每一项任务  具体详情。</string>
+    <string name="essential_intro_string_two">2.右上角的【编辑】 ，通过勾选进行选 择性删除（未标识可删除圆圈的则为报 道必需）。</string>
+    <string name="essential_intro_string_three">3.点击左侧【空方框】勾选该项即为完 成，再次单击即可恢复。</string>
+    <string name="essential_intro_string_four">4.右下角【加号】图样可自定义添加新 待办。</string>
+    <string name="test">这是主页</string>
+    <string name="essential_string_add">添加</string>
+    <string name="essential_string_hint">请输入待办事项（不超过14个字）</string>
+    <string name="title_activity_base">BaseActivity</string>
+    <string name="essential_edit">编辑</string>
+    <string name="textview">TextView</string>
+    <string name="essential">入学必备</string>
 </resources>

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="316dp"
+    android:layout_height="wrap_content"
+    android:layout_marginEnd="20dp"
+    android:layout_marginLeft="20dp"
+    android:layout_marginRight="20dp"
+    android:layout_marginStart="20dp">
+
+    <TextView
+        android:id="@+id/freshman_essential_intro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="125dp"
+        android:layout_marginStart="125dp"
+        android:layout_marginTop="30dp"
+        android:text="@string/essential_string_introduce"
+        android:textColor="@color/freshman_essential_color_introduce"
+        android:textSize="16sp" />
+
+    <ImageButton
+        android:id="@+id/essential_intro_close"
+        android:layout_width="18dp"
+        android:layout_height="18dp"
+        android:layout_marginLeft="96dp"
+        android:layout_marginStart="96dp"
+        android:layout_marginTop="12dp"
+        android:layout_toEndOf="@id/freshman_essential_intro"
+        android:layout_toRightOf="@id/freshman_essential_intro"
+        android:background="@null"
+        android:src="@mipmap/freshman_introduce_close"
+        tools:ignore="ContentDescription" />
+
+
+    <TextView
+        android:id="@+id/freshman_essential_intro_one"
+        android:layout_width="253dp"
+        android:layout_height="36dp"
+        android:layout_below="@id/freshman_essential_intro"
+        android:layout_marginEnd="30dp"
+        android:layout_marginLeft="33dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginStart="33dp"
+        android:layout_marginTop="18dp"
+        android:text="@string/essential_intro_string_one"
+        android:textColor="@color/freshman_essential_intro_color_text"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/freshman_essential_intro_two"
+        android:layout_width="254dp"
+        android:layout_height="58dp"
+        android:layout_below="@id/freshman_essential_intro_one"
+        android:layout_marginEnd="30dp"
+        android:layout_marginLeft="33dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginStart="33dp"
+        android:layout_marginTop="14dp"
+        android:text="@string/essential_intro_string_two"
+        android:textColor="@color/freshman_essential_intro_color_text"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/freshman_essential_intro_three"
+        android:layout_width="254dp"
+        android:layout_height="37dp"
+        android:layout_below="@id/freshman_essential_intro_two"
+        android:layout_marginEnd="31dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginRight="31dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="15dp"
+        android:text="@string/essential_intro_string_three"
+        android:textColor="@color/freshman_essential_intro_color_text"
+        android:textSize="14sp" />
+
+    <TextView
+        android:layout_width="254dp"
+        android:layout_height="36dp"
+        android:layout_below="@id/freshman_essential_intro_three"
+        android:layout_marginBottom="31dp"
+        android:layout_marginEnd="31dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginRight="31dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="13dp"
+        android:text="@string/essential_intro_string_four"
+        android:textColor="@color/freshman_essential_intro_color_text"
+        android:textSize="14sp" />
+
+</RelativeLayout>

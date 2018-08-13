@@ -3,4 +3,10 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="bg">@null</color>
+    <color name="freshman_essential_color_introduce">#333333</color>
+    <color name="essential_del_text">#999999</color>
+    <color name="freshman_essential_intro_color_text">#555555</color>
+    <color name="freshman_essential_color_list_item">#333333</color>
+    <color name="freshman_essential_button_add">#778ffa</color>
 </resources>

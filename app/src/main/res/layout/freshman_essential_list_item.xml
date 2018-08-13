@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.mredrock.cyxbs.freshman.widget.JCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="65dp"
+    android:layout_marginBottom="3dp"
+    android:layout_marginEnd="5dp"
+    android:layout_marginLeft="5dp"
+    android:layout_marginRight="15dp"
+    android:layout_marginStart="15dp"
+    android:layout_marginTop="3dp"
+    app:radius="8dp">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="307dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginEnd="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginStart="15dp"
+
+        android:padding="8dp">
+
+        <ImageView
+            android:id="@+id/essential_image"
+            android:layout_width="19dp"
+            android:layout_height="19dp"
+            android:scaleType="centerInside"
+            android:src="@mipmap/freshman_nesy_blue_frame"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/essential_radio_box_text"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/essential_radio_box_text"
+            android:layout_width="227dp"
+            android:layout_height="0dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginStart="5dp"
+            android:gravity="bottom"
+            android:maxLength="14"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.466"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="@string/essential_string_title" />
+
+        <ImageButton
+            android:id="@+id/essential_radio_box_fold"
+            android:layout_width="14dp"
+            android:layout_height="19dp"
+            android:background="@null"
+            android:contentDescription="@null"
+            android:scaleType="fitEnd"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1"
+            app:layout_constraintStart_toEndOf="@id/essential_radio_box_text"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@mipmap/freshman_nesy_down" />
+    </android.support.constraint.ConstraintLayout>
+
+
+</com.mredrock.cyxbs.freshman.widget.JCardView>
