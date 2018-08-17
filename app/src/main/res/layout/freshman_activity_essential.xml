@@ -18,7 +18,7 @@
         app:layout_constraintVertical_bias="0.0">
 
         <include
-            layout="@layout/freshman_essential_title"
+            layout="@layout/freshman_bar"
             app:layout_scrollFlags="scroll" />
     </android.support.design.widget.AppBarLayout>
 
@@ -61,7 +61,7 @@
             app:backgroundTint="@color/freshman_essential_button_add"
             app:elevation="4dp"
             app:fabSize="normal"
-            app:layout_behavior="com.mredrock.cyxbs.freshman.essential.ScrollAwareFABBehaviorDefault"
+            app:layout_behavior="com.mredrock.cyxbs.freshman.utils.ScrollAwareFABBehaviorDefault"
             app:pressedTranslationZ="7dp"
             app:srcCompat="@drawable/freshman_essential_add_icon_add"
             tools:ignore="VectorDrawableCompat" />

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/train_page_bg"
+    tools:context=".activity.TrainingActivity">
+
+    <include
+        android:id="@+id/train_bar"
+        layout="@layout/freshman_bar"
+        android:layout_width="match_parent"
+        android:layout_height="63dp"
+
+        app:layout_constraintBottom_toTopOf="@+id/train_tabbar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <android.support.design.widget.TabLayout
+        android:id="@+id/train_tabbar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/cardview_light_background"
+        android:elevation="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/train_bar"
+        app:layout_constraintVertical_chainStyle="spread_inside"
+        app:tabGravity="fill"
+        app:tabIndicatorColor="@color/train_tab_text_sel"
+        app:tabIndicatorHeight="2dp"
+        app:tabMode="fixed"
+        app:tabSelectedTextColor="@color/train_tab_text_sel"
+        app:tabTextColor="@color/train_trb_text" />
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/train_tab_pager"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/train_tabbar"
+        tools:background="@color/bg" />
+
+</android.support.constraint.ConstraintLayout>

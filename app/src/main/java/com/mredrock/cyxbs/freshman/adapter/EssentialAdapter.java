@@ -1,7 +1,5 @@
-package com.mredrock.cyxbs.freshman.freshmanlist;
+package com.mredrock.cyxbs.freshman.adapter;
 
-import android.content.Context;
-import android.graphics.Paint;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -29,18 +27,14 @@ public class EssentialAdapter extends RecyclerView.Adapter<EssentialAdapter.Edit
     private int Flag = 0;
     private int count = 0;
     private int get = 0;
-    private RecyclerView recyclerView;
-    private Context context;
 
     private ArrayList<EssentialDataBean> itemList;
 
-    public EssentialAdapter(ArrayList<EssentialDataBean> item, RecyclerView recyclerView, Context context) {
+    public EssentialAdapter(ArrayList<EssentialDataBean> item, RecyclerView recyclerView) {
         this.itemList = item;
         Log.d(TAG, "initAdapter");
-        this.recyclerView = recyclerView;
-        setRecyclerScrollListener(recyclerView);
 
-        this.context = context;
+
     }
 
 
@@ -55,27 +49,22 @@ public class EssentialAdapter extends RecyclerView.Adapter<EssentialAdapter.Edit
     @Override
     public void onBindViewHolder(final EditViewHolder holder, final int position) {
         holder.textView.setText(itemList.get(position).getName());
-        holder.textView.setPaintFlags(holder.textView.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
         if (itemList.get(position).isGet()) {
             holder.textView.getResources().getColor(R.color.essential_del_text);
-            holder.textView.setPaintFlags(holder.textView.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
         } else {
             holder.textView.getResources().getColor(R.color.freshman_essential_intro_color_text);
-            holder.textView.setPaintFlags(holder.textView.getPaintFlags() & (Paint.STRIKE_THRU_TEXT_FLAG));
         }
         if (itemList.get(position).isCustom()) {
             holder.button.setVisibility(View.INVISIBLE);
         }
         if (Flag == EDIT_MODE) {
-            if (itemList.get(position).isProprity()) {
+            holder.image.setVisibility(View.VISIBLE);
+            holder.image.setImageResource(R.mipmap.freshman_edit_del_blue_frame);
+            if (itemList.get(position).isProperty()) {
                 holder.image.setVisibility(View.INVISIBLE);
-            } else {
-                holder.image.setVisibility(View.VISIBLE);
             }
             if (itemList.get(position).isSelect()) {
                 holder.image.setImageResource(R.mipmap.freshman_edit_del_sel_blue_farm);
-            } else {
-                holder.image.setImageResource(R.mipmap.freshman_edit_del_blue_frame);
             }
             holder.image.setTag(position);
             holder.image.setOnClickListener(new View.OnClickListener() {
@@ -100,7 +89,6 @@ public class EssentialAdapter extends RecyclerView.Adapter<EssentialAdapter.Edit
             holder.image.setVisibility(View.VISIBLE);
             if (itemList.get(position).isGet()) {
                 holder.textView.getResources().getColor(R.color.essential_del_text);
-                holder.textView.setPaintFlags(holder.textView.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
                 holder.image.setImageResource(R.drawable.freshman_nesy_blue_frame_sel);
             } else {
                 holder.image.setImageResource(R.drawable.freshman_nesy_blue_frame);
@@ -112,7 +100,6 @@ public class EssentialAdapter extends RecyclerView.Adapter<EssentialAdapter.Edit
                     int pos = (int) v.getTag();
                     if (itemList.get(pos).isGet()) {
                         holder.textView.getResources().getColor(R.color.freshman_essential_intro_color_text);
-                        holder.textView.setPaintFlags(holder.textView.getPaintFlags() & (Paint.STRIKE_THRU_TEXT_FLAG));
                         holder.image.setImageResource(R.drawable.freshman_nesy_blue_frame);
                         itemList.get(pos).setGet(false);
                         ItemMove(pos);
@@ -158,60 +145,19 @@ public class EssentialAdapter extends RecyclerView.Adapter<EssentialAdapter.Edit
             itemList.remove(fromPosition);
             itemList.add(0, s);
             get++;
-            notifyItemRangeChanged(get + 1, itemList.size() - get);
 
+            notifyItemRangeChanged(0, itemList.size());
         } else {
-
             itemList.remove(fromPosition);
             itemList.add(s);
-            notifyItemMoved(fromPosition, itemList.size());
+            notifyItemRemoved(fromPosition);
             get--;
-            notifyItemRangeChanged(itemList.size(), 1);
-
-
+            notifyItemRangeChanged(get + 1, itemList.size() - get);
+            notifyDataSetChanged();
         }
 
     }
 
-    private void smoothMoveToPosition(RecyclerView mRecyclerView, final int position) {
-        // 第一个可见位置
-        int firstItem = mRecyclerView.getChildLayoutPosition(mRecyclerView.getChildAt(0));
-        // 最后一个可见位置
-        int lastItem = mRecyclerView.getChildLayoutPosition(mRecyclerView.getChildAt(mRecyclerView.getChildCount() - 1));
-
-        if (position < firstItem) {
-            // 如果跳转位置在第一个可见位置之前，就smoothScrollToPosition可以直接跳转
-            mRecyclerView.smoothScrollToPosition(position);
-        } else if (position <= lastItem) {
-            // 跳转位置在第一个可见项之后，最后一个可见项之前
-            // smoothScrollToPosition根本不会动，此时调用smoothScrollBy来滑动到指定位置
-            int movePosition = position - firstItem;
-            if (movePosition >= 0 && movePosition < mRecyclerView.getChildCount()) {
-                int top = mRecyclerView.getChildAt(movePosition).getTop();
-                mRecyclerView.smoothScrollBy(0, top);
-            }
-        } else {
-            // 如果要跳转的位置在最后可见项之后，则先调用smoothScrollToPosition将要跳转的位置滚动到可见位置
-            // 再通过onScrollStateChanged控制再次调用smoothMoveToPosition，执行上一个判断中的方法
-            mRecyclerView.smoothScrollToPosition(position);
-            mToPosition = position;
-            mShouldScroll = true;
-        }
-
-    }
-
-    private void setRecyclerScrollListener(final RecyclerView mRecyclerView) {
-        mRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
-            @Override
-            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
-                super.onScrollStateChanged(recyclerView, newState);
-                if (mShouldScroll) {
-                    mShouldScroll = false;
-                    smoothMoveToPosition(mRecyclerView, mToPosition);
-                }
-            }
-        });
-    }
 
     @Override
     public void reloadAfterDel() {
@@ -231,20 +177,15 @@ public class EssentialAdapter extends RecyclerView.Adapter<EssentialAdapter.Edit
         EssentialDataBean dataBean = new EssentialDataBean();
         dataBean.setName(inputString);
         dataBean.setCustom(true);
+        dataBean.setId(itemList.size() + 1);
         itemList.add(dataBean);
         notifyItemInserted(itemList.size());
         notifyItemRangeChanged(get, itemList.size());
     }
 
-    @Override
-    public void addItem(EssentialDataBean d) {
-        itemList.add(d);
-        notifyItemInserted(itemList.size());
-        notifyDataSetChanged();
-    }
 
     @Override
-    public void changeMode(int i) {
+    public void changeModeTo(int i) {
         if (EDIT_MODE == i) {
             this.Flag = EDIT_MODE;
             notifyItemRangeChanged(0, itemList.size());
@@ -267,9 +208,17 @@ public class EssentialAdapter extends RecyclerView.Adapter<EssentialAdapter.Edit
 
         EditViewHolder(View itemView) {
             super(itemView);
-            textView = (TextView) itemView.findViewById(R.id.essential_radio_box_text);
-            button = (ImageButton) itemView.findViewById(R.id.essential_radio_box_fold);
+            textView = (TextView) itemView.findViewById(R.id.essential_titile);
+            button = (ImageButton) itemView.findViewById(R.id.essential_fold);
             image = (ImageView) itemView.findViewById(R.id.essential_image);
+            button.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                }
+            });
         }
+
+
     }
 }

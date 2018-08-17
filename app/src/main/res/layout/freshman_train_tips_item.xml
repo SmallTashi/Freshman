@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.mredrock.cyxbs.freshman.widget.JCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="20dp"
+    android:layout_marginLeft="35dp"
+    android:layout_marginRight="35dp"
+    android:layout_marginTop="15dp"
+    app:radius="6dp">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/train_big_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="25dp"
+            android:layout_marginLeft="23dp"
+            android:layout_marginRight="25dp"
+            android:layout_marginStart="23dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/train_tips_big_title"
+            android:textAppearance="@style/TextAppearance.AppCompat"
+            android:textColor="@color/freshman_essential_color_list_item"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@id/train_title"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/train_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="25dp"
+            android:layout_marginLeft="23dp"
+            android:layout_marginRight="25dp"
+            android:layout_marginStart="23dp"
+            android:layout_marginTop="15dp"
+            android:textAppearance="@style/TextAppearance.AppCompat"
+            android:textColor="@color/freshman_essential_intro_color_text"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toTopOf="@id/train_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/train_big_title"
+            tools:text="@string/train_tips_scd" />
+
+        <TextView
+            android:id="@+id/train_content"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="21dp"
+            android:layout_marginEnd="25dp"
+            android:layout_marginLeft="22dp"
+            android:layout_marginRight="25dp"
+            android:layout_marginStart="22dp"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/essential_item_expand_title"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/train_title"
+            tools:text="@string/train_tips_thd" />
+    </android.support.constraint.ConstraintLayout>
+
+
+</com.mredrock.cyxbs.freshman.widget.JCardView>

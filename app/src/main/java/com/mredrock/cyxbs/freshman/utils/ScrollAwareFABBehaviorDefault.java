@@ -1,4 +1,4 @@
-package com.mredrock.cyxbs.freshman.essential;
+package com.mredrock.cyxbs.freshman.utils;
 
 import android.content.Context;
 import android.support.design.widget.CoordinatorLayout;

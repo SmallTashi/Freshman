@@ -8,5 +8,11 @@
     <color name="essential_del_text">#999999</color>
     <color name="freshman_essential_intro_color_text">#555555</color>
     <color name="freshman_essential_color_list_item">#333333</color>
+    <color name="essential_item_expand_title">#666666</color>
     <color name="freshman_essential_button_add">#778ffa</color>
+    <color name="train_page_bg">#f3f3f3f3</color>
+    <color name="train_tab_text_sel">#54acff</color>
+    <color name="train_trb_text">#999999
+    </color>
+    <color name="strategy_bg">#F6F6F6</color>
 </resources>

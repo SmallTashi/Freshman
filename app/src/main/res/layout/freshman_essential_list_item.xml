@@ -29,14 +29,14 @@
             android:scaleType="centerInside"
             android:src="@mipmap/freshman_nesy_blue_frame"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/essential_radio_box_text"
+            app:layout_constraintEnd_toStartOf="@id/essential_titile"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="ContentDescription" />
 
         <TextView
-            android:id="@+id/essential_radio_box_text"
+            android:id="@+id/essential_titile"
             android:layout_width="227dp"
             android:layout_height="0dp"
             android:layout_marginLeft="5dp"
@@ -51,7 +51,7 @@
             tools:text="@string/essential_string_title" />
 
         <ImageButton
-            android:id="@+id/essential_radio_box_fold"
+            android:id="@+id/essential_fold"
             android:layout_width="14dp"
             android:layout_height="19dp"
             android:background="@null"
@@ -60,7 +60,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1"
-            app:layout_constraintStart_toEndOf="@id/essential_radio_box_text"
+            app:layout_constraintStart_toEndOf="@id/essential_titile"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@mipmap/freshman_nesy_down" />
     </android.support.constraint.ConstraintLayout>

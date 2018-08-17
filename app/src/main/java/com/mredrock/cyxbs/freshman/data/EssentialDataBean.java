@@ -5,14 +5,23 @@ public class EssentialDataBean {
     public static final int CHILD_ITEM = 1;//子布局
     private String name;
     private String content;
+    private int id;
+    private String property = "非必需";
     private boolean isCustom = false;
     private boolean isGet = false;
     private boolean isSelect = false;
-    private boolean isProprity = true;
     private int type;// 显示类型
     private boolean isExpand;// 是否展开
 
     public EssentialDataBean() {
+    }
+
+    public String getProperty() {
+        return property;
+    }
+
+    public boolean isProperty() {
+        return this.property.equals("必须");
     }
 
     public EssentialDataBean(String s, boolean f, boolean e) {
@@ -61,12 +70,8 @@ public class EssentialDataBean {
         isSelect = select;
     }
 
-    public boolean isProprity() {
-        return isProprity;
-    }
-
-    public void setProprity(boolean proprity) {
-        isProprity = proprity;
+    public void setProperty(String property) {
+        this.property = property;
     }
 
     public int getType() {
@@ -83,5 +88,13 @@ public class EssentialDataBean {
 
     public void setExpand(boolean expand) {
         isExpand = expand;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

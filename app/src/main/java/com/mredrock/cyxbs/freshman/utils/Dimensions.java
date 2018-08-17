@@ -4,7 +4,7 @@ import android.content.Context;
 
 public class Dimensions {
 
-    private static int dp2px(Context context, float dip) {
+    public static int dp2px(Context context, float dip) {
         final float scale = context.getResources().getDisplayMetrics().density;
         return (int) (dip * scale + 0.5f);
     }
@@ -18,6 +18,7 @@ public class Dimensions {
         final float fontScale = context.getResources().getDisplayMetrics().scaledDensity;
         return (int) (spValue * fontScale + 0.5f);
     }
+
 
     public static int dp2sp(Context context, float dip) {
         float px = dp2px(context, dip);

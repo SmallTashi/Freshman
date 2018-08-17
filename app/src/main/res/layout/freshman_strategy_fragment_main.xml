@@ -1,0 +1,397 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/strategy_bg">
+
+
+    <com.mredrock.cyxbs.freshman.widget.JCardView
+        android:id="@+id/strategy_hall"
+        android:layout_width="100dp"
+        android:layout_height="115dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/strategy_hall"
+        app:layout_constraintBottom_toTopOf="@+id/strategy_scenic"
+        app:layout_constraintEnd_toStartOf="@+id/strategy_dormitory"
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:radius="5dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:scaleType="center"
+                android:src="@mipmap/strategy_item_hall"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/hall"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+    </com.mredrock.cyxbs.freshman.widget.JCardView>
+
+
+    <com.mredrock.cyxbs.freshman.widget.JCardView
+        android:id="@+id/strategy_dormitory"
+        android:layout_width="100dp"
+        android:layout_height="115dp"
+
+        android:layout_marginEnd="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginStart="10dp"
+
+        android:layout_marginTop="20dp"
+        android:layout_toEndOf="@id/strategy_hall"
+
+        android:layout_toRightOf="@id/strategy_hall"
+        app:layout_constraintBottom_toTopOf="@+id/strategy_surroundings"
+        app:layout_constraintEnd_toStartOf="@+id/strategy_food"
+        app:layout_constraintStart_toEndOf="@+id/strategy_hall"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="15dp"
+                android:scaleType="center"
+                android:src="@mipmap/strategy_item_dormitory"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/dormitory"
+                android:textSize="14sp" />
+        </LinearLayout>
+    </com.mredrock.cyxbs.freshman.widget.JCardView>
+
+    <com.mredrock.cyxbs.freshman.widget.JCardView
+        android:id="@+id/strategy_food"
+        android:layout_width="100dp"
+        android:layout_height="115dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginEnd="25dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_toEndOf="@id/strategy_dormitory"
+        android:layout_toRightOf="@id/strategy_dormitory"
+        app:layout_constraintBottom_toTopOf="@+id/strategy_data"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/strategy_dormitory"
+        app:layout_constraintTop_toTopOf="parent"
+        app:radius="6dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:scaleType="center"
+                android:src="@mipmap/strategy_item_food"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="2dp"
+                android:text="@string/food"
+                android:textSize="14sp" />
+        </LinearLayout>
+    </com.mredrock.cyxbs.freshman.widget.JCardView>
+
+    <com.mredrock.cyxbs.freshman.widget.JCardView
+        android:id="@+id/strategy_scenic"
+        android:layout_width="100dp"
+        android:layout_height="115dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@id/strategy_hall"
+        android:layout_marginBottom="15dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="15dp"
+
+        app:layout_constraintBottom_toTopOf="@+id/strategy_bank"
+        app:layout_constraintEnd_toStartOf="@id/strategy_surroundings"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/strategy_hall"
+        app:radius="6dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="3dp"
+                android:scaleType="center"
+                android:src="@mipmap/strategy_item_scenic"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/scenic"
+                android:textSize="14sp" />
+        </LinearLayout>
+    </com.mredrock.cyxbs.freshman.widget.JCardView>
+
+    <com.mredrock.cyxbs.freshman.widget.JCardView
+        android:id="@+id/strategy_surroundings"
+
+        android:layout_width="100dp"
+        android:layout_height="115dp"
+        android:layout_below="@id/strategy_dormitory"
+
+        android:layout_marginBottom="15dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="15dp"
+        android:layout_toEndOf="@+id/strategy_scenic"
+        android:layout_toRightOf="@+id/strategy_scenic"
+        app:layout_constraintBottom_toTopOf="@+id/strategy_bus"
+        app:layout_constraintEnd_toStartOf="@+id/strategy_data"
+        app:layout_constraintStart_toEndOf="@+id/strategy_scenic"
+        app:layout_constraintTop_toBottomOf="@+id/strategy_dormitory"
+        app:radius="6dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:scaleType="center"
+                android:src="@mipmap/strategy_item_surrounding"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/surrounding"
+                android:textSize="14sp" />
+        </LinearLayout>
+    </com.mredrock.cyxbs.freshman.widget.JCardView>
+
+    <com.mredrock.cyxbs.freshman.widget.JCardView
+        android:id="@+id/strategy_data"
+        android:layout_width="100dp"
+        android:layout_height="115dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/strategy_food"
+
+        android:layout_marginBottom="15dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="15dp"
+        android:layout_toEndOf="@id/strategy_surroundings"
+        android:layout_toRightOf="@id/strategy_surroundings"
+
+        app:layout_constraintBottom_toTopOf="@+id/strategy_express"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/strategy_surroundings"
+        app:layout_constraintTop_toBottomOf="@+id/strategy_food"
+        app:radius="6dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:scaleType="center"
+                android:src="@mipmap/strategy_item_data"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="2dp"
+                android:text="@string/data"
+                android:textSize="14sp" />
+        </LinearLayout>
+    </com.mredrock.cyxbs.freshman.widget.JCardView>
+
+    <com.mredrock.cyxbs.freshman.widget.JCardView
+        android:id="@+id/strategy_bank"
+        android:layout_width="100dp"
+        android:layout_height="115dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@id/strategy_scenic"
+        android:layout_marginEnd="10dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="15dp"
+
+        app:layout_constraintEnd_toStartOf="@+id/strategy_bus"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/strategy_scenic"
+        app:radius="6dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:scaleType="center"
+                android:src="@mipmap/strategy_item_bank"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/bank"
+                android:textSize="14sp" />
+        </LinearLayout>
+    </com.mredrock.cyxbs.freshman.widget.JCardView>
+
+    <com.mredrock.cyxbs.freshman.widget.JCardView
+        android:id="@+id/strategy_bus"
+        android:layout_width="100dp"
+        android:layout_height="115dp"
+        android:layout_below="@id/strategy_surroundings"
+        android:layout_centerHorizontal="true"
+        android:layout_marginEnd="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="15dp"
+        android:layout_toEndOf="@id/strategy_bank"
+        android:layout_toRightOf="@id/strategy_bank"
+
+        app:layout_constraintEnd_toStartOf="@+id/strategy_express"
+        app:layout_constraintStart_toEndOf="@+id/strategy_bank"
+        app:layout_constraintTop_toBottomOf="@+id/strategy_surroundings"
+        app:radius="6dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:scaleType="center"
+                android:src="@mipmap/strategy_item_bus"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/bus"
+                android:textSize="14sp" />
+        </LinearLayout>
+    </com.mredrock.cyxbs.freshman.widget.JCardView>
+
+    <com.mredrock.cyxbs.freshman.widget.JCardView
+        android:id="@+id/strategy_express"
+        android:layout_width="100dp"
+        android:layout_height="115dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/strategy_data"
+
+        android:layout_marginEnd="25dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="15dp"
+        android:layout_toEndOf="@id/strategy_bus"
+        android:layout_toRightOf="@id/strategy_bus"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/strategy_bus"
+        app:layout_constraintTop_toBottomOf="@+id/strategy_data"
+        app:radius="6dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="8dp"
+                android:scaleType="center"
+                android:src="@mipmap/strategy_item_express"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="3dp"
+                android:text="@string/express"
+                android:textSize="14sp" />
+        </LinearLayout>
+    </com.mredrock.cyxbs.freshman.widget.JCardView>
+
+</android.support.constraint.ConstraintLayout>
+

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.mredrock.cyxbs.freshman.widget.JCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="20dp"
+    android:layout_marginLeft="35dp"
+    android:layout_marginRight="35dp"
+    android:layout_marginTop="15dp"
+    app:radius="6dp">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/strategy_image_pager"
+            android:layout_width="match_parent"
+            android:layout_height="164dp"
+            app:layout_constraintBottom_toTopOf="@id/strategy_name"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+
+        </android.support.v4.view.ViewPager>
+
+        <TextView
+            android:id="@+id/strategy_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="14dp"
+            android:layout_marginLeft="23dp"
+            android:layout_marginRight="14dp"
+            android:layout_marginStart="23dp"
+            android:layout_marginTop="18dp"
+            android:textAppearance="@style/TextAppearance.AppCompat"
+            android:textColor="@color/freshman_essential_intro_color_text"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toTopOf="@id/strategy_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/strategy_image_pager"
+            tools:text="@string/strategy_hall_name" />
+
+        <TextView
+            android:id="@+id/strategy_content"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="19dp"
+            android:layout_marginEnd="14dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="14dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="11dp"
+            android:textColor="@color/essential_item_expand_title"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/strategy_name"
+            tools:text="@string/strategy_hall_intro" />
+    </android.support.constraint.ConstraintLayout>
+
+
+</com.mredrock.cyxbs.freshman.widget.JCardView>

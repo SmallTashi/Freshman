@@ -14,4 +14,35 @@
     <string name="essential_edit">编辑</string>
     <string name="textview">TextView</string>
     <string name="essential">入学必备</string>
+    <string name="train_media_video">军训风采</string>
+    <string name="train_media_tips">小贴士</string>
+    <string name="essential_item_test">\t1.很长很长很长很长很长很长很长很长很长很长很长很长\n\t2.0继续很长很长继续很长很长继续很长很长继续很长很长…</string>
+    <string name="train_string_image">军训图片</string>
+    <string name="train_string_video">军训视频</string>
+    <string name="train_tips_big_title">军训纪律</string>
+    <string name="train_tips_thd">1.军训期间请假遵守一事一请假的原则，无特 殊事由不得请假； 2.学生在军训场上感到不适，可直接通过“打 报告的形式直接向…… 3.军训期间请假遵守一事一请假的原则，无特 殊事由不得请假； 4.学生在军训场上感到不适，可直接通过“打 报告的形式直接向…… 5.军训期间请假遵守一事一请假的原则，无特 殊事由不得请假； 6.学生在军训场上感到不适，可直接通过“打 报告的形式直接向……</string>
+    <string name="train_tips_scd">关于军训期间请销假的规定 </string>
+    <string name="school_surroundings_name">数字图书馆</string>
+    <string name="school_surroundings_intro">地点、距离、如何到达、有什么好玩的，地点、距离 如何到达、有什么好玩的地点、距离、如何到达、有 什么好玩的，地点、距离、如何到达、有什么好 玩的，地点、距。</string>
+    <string name="strategy_food_name">新疆大盘鸡</string>
+    <string name="strategy_food_intro">受好评理由、地理位置，受好评理由地理位好评理有 由、地理位置，受好评理由、地理位置受好评理由用 地理位置受好评理由、地理位置受好评理由、地理看 位置。</string>
+    <string name="strategy_hall_name">中心食堂</string>
+    <string name="strategy_hall_intro">这是这个食堂的介绍它位于哪哪哪，环境怎么样的等 等等这是这个食堂的介绍它位于哪哪哪，环么样的等 等等这是这个食堂的介绍它位于哪哪哪环境怎么样的 等等等。 </string>
+    <string name="strategy_bank_name">中国银行</string>
+    <string name="strategy_bank_intro">重庆市南岸区崇文路8号（重庆邮 大学旁</string>
+
+    <string name="strategy_dormitory_name">寝室楼栋介绍</string>
+    <string name="strategy_dormitory_intro">位于哪哪哪，周围有啥啥啥，楼栋内有什么设施位于 哪哪哪，周围有啥啥啥，楼栋内有什么设施位于哪哪 哪，周围有啥啥啥，楼栋内有什么设施位于哪哪哪， 周围有啥啥啥，楼栋内有什么设。</string>
+    <string name="hall">学生食堂</string>
+    <string name="dormitory">学生寝室</string>
+    <string name="food">周边美食</string>
+    <string name="scenic">附近景点</string>
+    <string name="surrounding">校园环境</string>
+    <string name="data">数据揭秘</string>
+    <string name="bank">附近银行</string>
+    <string name="bus">公交路线</string>
+    <string name="express">快递收发</string>
+    <string name="training">军训风采</string>
+    <string name="strategy">校园攻略</string>
+    <string name="main">主页</string>
 </resources>

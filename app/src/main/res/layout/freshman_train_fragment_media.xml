@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+
+    android:layout_height="match_parent"
+    tools:background="@color/train_page_bg">
+
+    <RelativeLayout
+        android:id="@+id/train_image_viewpager_frame"
+        android:layout_width="match_parent"
+        android:layout_height="220dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="5dp"
+        android:background="@color/cardview_light_background"
+        app:layout_constraintBottom_toTopOf="@+id/train_video_viewpager_frame"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/train_image_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="15dp"
+            android:layout_marginTop="15dp"
+            android:text="@string/train_string_image"
+            android:textAppearance="@style/TextAppearance.AppCompat"
+            android:textColor="@color/freshman_essential_color_introduce"
+            android:textSize="16sp"
+            tools:text="@string/train_string_image" />
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/train_image_pager"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_below="@id/train_image_text"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="15dp"
+            tools:background="@color/essential_del_text" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/train_video_viewpager_frame"
+        android:layout_width="0dp"
+        android:layout_height="238dp"
+        android:background="@color/cardview_light_background"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/train_image_viewpager_frame">
+
+        <TextView
+            android:id="@+id/train_video_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="15dp"
+            android:text="@string/train_string_video"
+            android:textAppearance="@style/TextAppearance.AppCompat"
+            android:textColor="@color/freshman_essential_color_introduce"
+            android:textSize="16sp"
+            tools:text="@string/train_string_video" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/train_video_pager"
+            android:layout_width="match_parent"
+            android:layout_height="224dp"
+            android:layout_alignParentBottom="true"
+
+            android:layout_below="@id/train_video_text"
+            android:layout_marginBottom="23dp"
+            android:layout_marginTop="0dp"
+            android:scrollbars="horizontal"
+            tools:listitem="@layout/freshman_train_media_video_item" />
+    </RelativeLayout>
+
+</android.support.constraint.ConstraintLayout>
