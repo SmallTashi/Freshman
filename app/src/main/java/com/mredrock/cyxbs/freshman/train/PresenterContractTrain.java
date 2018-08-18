@@ -3,30 +3,37 @@ package com.mredrock.cyxbs.freshman.train;
 import com.mredrock.cyxbs.freshman.data.TrainMediaData;
 import com.mredrock.cyxbs.freshman.data.TrainTipsData;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public interface PresenterContractTrain {
     interface get {
-        ArrayList<TrainTipsData.TipsBean> loadTips();
+        void loadTips();
 
-        ArrayList<TrainMediaData.PictureBean> loadPic();
+        void loadPic();
 
-        ArrayList<TrainMediaData.VideoBean> loadVideo();
+        void loadVideo();
     }
 
-    interface loadData {
-        ArrayList<TrainMediaData.VideoBean> loadVideo();
+    interface callback {
+        void onFailed();
 
-        ArrayList<TrainMediaData.PictureBean> loadImage();
+        void loadVideo(List<TrainMediaData.VideoBean> tips);
 
-        ArrayList<TrainTipsData.TipsBean> loadTips();
+        void loadImage(List<TrainMediaData.PictureBean> images);
+
+        void loadTips(List<TrainTipsData.DescribeBean> video);
+    }
+
+    interface ItemClickListener {
+        void onItemClick(String s);
     }
 
     interface showTips {
-        void addToast();
+        void addToast(String s);
     }
 
     interface showMedia {
+        void intent(String s);
 
         void addToast();
 

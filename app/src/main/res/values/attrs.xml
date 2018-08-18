@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-
+    <declare-styleable name="ViewRing">
+        <attr name="RingView_Color" format="color" />
+        <attr name="RingView_minRadius" format="dimension" />
+        <attr name="RingView_wind" format="integer" />
+        <attr name="RingView_progress" format="float" />
+    </declare-styleable>
     <declare-styleable name="JCardView">
         <attr name="leftRadius" format="dimension" />
         <attr name="topRadius" format="dimension" />
@@ -15,5 +19,13 @@
         <attr name="backgroundColor" format="color" />
         <attr name="shadowColor" format="color" />
         <attr name="shadowRadius" format="dimension" />
+    </declare-styleable>
+    <declare-styleable name="RollerView">
+        <attr name="pageMargin" format="dimension" />
+        <attr name="EdgePageSize" format="dimension" />
+        <attr name="pageScale" format="float" />
+        <attr name="aspectRatio" format="float" />
+        <attr name="showMultiPage" format="boolean" />
+        <attr name="delay" format="integer" />
     </declare-styleable>
 </resources>

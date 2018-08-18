@@ -68,7 +68,7 @@ public class ImagePagerAdapter extends PagerAdapter implements View.OnTouchListe
     public Object instantiateItem(ViewGroup container, int position) {
         View view = LayoutInflater.from(context).inflate(R.layout.freshman_train_media_image_item, container, false);
         ImageView imageView = (ImageView) view.findViewById(R.id.train_image);
-        Glide.with(context).load(url.get(position)).into(imageView);
+        Glide.with(context).load(url.get(1)).into(imageView);
         container.addView(view);
         return view;
     }

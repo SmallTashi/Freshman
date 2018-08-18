@@ -3,12 +3,13 @@ package com.mredrock.cyxbs.freshman.strategy;
 
 import com.mredrock.cyxbs.freshman.data.StrategyData;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public interface PresenterContractStrategy {
 
+
     interface Show {
-        void changeList(String s);
+        void addToast(String s);
 
     }
 
@@ -16,11 +17,20 @@ public interface PresenterContractStrategy {
     interface ChangeFragment {
         void addMainFragment(StrategyMainFragment fragment);
 
+        List<StrategyData.ArrayBean> getList(String s);
+
         void into(String s);
+
+    }
+
+    interface callback {
+        void loadData(List<StrategyData.ArrayBean> data);
+
+        void onFailed();
     }
 
     interface get {
-        ArrayList<StrategyData.Data> getData(String type);
+        void getData(String type);
     }
 
 

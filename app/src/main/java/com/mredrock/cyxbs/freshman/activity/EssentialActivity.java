@@ -1,7 +1,6 @@
 package com.mredrock.cyxbs.freshman.activity;
 
 import android.app.Dialog;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.RecyclerView;
@@ -35,8 +34,8 @@ public class EssentialActivity extends BaseActivity implements PresenterContract
         super.onCreate(savedInstanceState);
         setContentView(R.layout.freshman_activity_essential);
         ButterKnife.bind(this);
-        presenterEssential.setRecycler(recycler, this, this);
-        presenterEssential.loadData();
+        presenterEssential.setAdapter(recycler, this, this);
+
         add.setOnClickListener(this);
         edit.setOnClickListener(this);
         leftIcon.setOnClickListener(this);
@@ -65,6 +64,11 @@ public class EssentialActivity extends BaseActivity implements PresenterContract
         dialog.show();
     }
 
+    @Override
+    public void addToast(String s) {
+        Toast.makeText(this, s, Toast.LENGTH_SHORT);
+    }
+
 
     @Override
     public void onClick(View v) {
@@ -74,8 +78,6 @@ public class EssentialActivity extends BaseActivity implements PresenterContract
                 show1();
                 break;
             case R.id.freshman_essential_bar_return:
-                Intent intent = new Intent(EssentialActivity.this, TestActivity.class);
-                startActivity(intent);
                 finish();
                 break;
             case R.id.freshman_essential_bar_edit:
@@ -100,7 +102,6 @@ public class EssentialActivity extends BaseActivity implements PresenterContract
         final Dialog bottomDialog = new Dialog(this, R.style.dialog);
         View contentView = LayoutInflater.from(this).inflate(R.layout.freshman_essential_layout_add_item, null);
         bottomDialog.setContentView(contentView);
-
         bottomDialog.getWindow().setGravity(Gravity.BOTTOM);
         bottomDialog.show();
         final EditText input = (EditText) contentView.findViewById(R.id.essential_edit);

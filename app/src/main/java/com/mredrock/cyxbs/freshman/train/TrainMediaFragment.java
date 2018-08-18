@@ -1,5 +1,6 @@
 package com.mredrock.cyxbs.freshman.train;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -11,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.mredrock.cyxbs.freshman.R;
+import com.mredrock.cyxbs.freshman.activity.WebViewActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -40,8 +42,8 @@ public class TrainMediaFragment extends Fragment implements PresenterContractTra
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         p.setVideoAdapter(videoPager, getContext());
-        p.setImageAdapter(imagePager, getContext(), this);
 
+        p.setImageAdapter(imagePager, getContext(), this);
     }
 
 
@@ -49,6 +51,13 @@ public class TrainMediaFragment extends Fragment implements PresenterContractTra
     public void onDestroyView() {
         super.onDestroyView();
         unbinder.unbind();
+    }
+
+    @Override
+    public void intent(String s) {
+        Intent intent = new Intent(getActivity(), WebViewActivity.class);
+        intent.putExtra("url", s);
+        startActivity(intent);
     }
 
     @Override

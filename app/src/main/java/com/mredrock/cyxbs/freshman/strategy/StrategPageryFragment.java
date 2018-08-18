@@ -47,17 +47,20 @@ public class StrategPageryFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         strategyFragmentTab.setVisibility(View.VISIBLE);
         ArrayList<Fragment> fragments = new ArrayList<>();
+        TabPagerLoader loader;
         switch (flag) {
             case DataTypeManager.STRATEGY.DORMITORY:
                 fragments.add(StrategyTabFragment.getInstance(DataTypeManager.STRATEGY.DOR_ONE));
                 fragments.add(StrategyTabFragment.getInstance(DataTypeManager.STRATEGY.DOR_TWO));
                 fragments.add(StrategyTabFragment.getInstance(DataTypeManager.STRATEGY.DOR_THREE));
                 fragments.add(StrategyTabFragment.getInstance(DataTypeManager.STRATEGY.DOR_FOUR));
-                TabPagerLoader loader = new TabPagerLoader(this.getFragmentManager(), fragments, DataTypeManager.Ui.STRATEGY_DORMITORY);
+                loader = new TabPagerLoader(this.getFragmentManager(), fragments, DataTypeManager.Ui.STRATEGY_DORMITORY);
                 loader.setUi(strategyFragmentPager, strategyFragmentTab);
                 break;
             case DataTypeManager.STRATEGY.DATA:
                 fragments.add(StrategyDetailFragment.getInstance("男女比例"));
+                loader = new TabPagerLoader(this.getFragmentManager(), fragments, DataTypeManager.Ui.STRATEGY_DATA);
+                loader.setUi(strategyFragmentPager, strategyFragmentTab);
                 break;
         }
 

@@ -2,7 +2,6 @@ package com.mredrock.cyxbs.freshman.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
@@ -12,7 +11,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class TestActivity extends AppCompatActivity implements View.OnClickListener {
+public class TestActivity extends BaseActivity implements View.OnClickListener {
 
     @BindView(R.id.essential)
     Button essential;
@@ -28,7 +27,6 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test);
         ButterKnife.bind(this);
-
     }
 
     @OnClick({R.id.essential, R.id.train, R.id.strategy, R.id.main})
@@ -37,18 +35,30 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.essential:
                 Intent a = new Intent(TestActivity.this, EssentialActivity.class);
                 startActivity(a);
+                overridePendingTransition(
+                        android.R.anim.fade_in,
+                        android.R.anim.fade_out);
                 break;
             case R.id.train:
                 Intent b = new Intent(TestActivity.this, TrainingActivity.class);
                 startActivity(b);
+                overridePendingTransition(
+                        android.R.anim.fade_in,
+                        android.R.anim.fade_out);
                 break;
             case R.id.strategy:
                 Intent c = new Intent(TestActivity.this, StrategyMainActivity.class);
                 startActivity(c);
+                overridePendingTransition(
+                        android.R.anim.fade_in,
+                        android.R.anim.fade_out);
                 break;
             case R.id.main:
                 Intent d = new Intent(TestActivity.this, MainActivity.class);
                 startActivity(d);
+                overridePendingTransition(
+                        android.R.anim.fade_in,
+                        android.R.anim.fade_out);
                 break;
         }
     }

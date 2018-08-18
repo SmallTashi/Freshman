@@ -5,6 +5,7 @@ public class DataTypeManager {
     public static class DataBean {
         public static final int TRAIN_TIPS = 0;
         public static final int TRAIN_MEDIA_VIDEO = 1;
+        public static final int TRAIN_MEDIA_IMAGE = 3;
         public static final int STRATEGY = 2;
     }
 

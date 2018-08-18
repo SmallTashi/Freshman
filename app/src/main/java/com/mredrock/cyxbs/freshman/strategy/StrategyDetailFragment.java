@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.mredrock.cyxbs.freshman.R;
 import com.mredrock.cyxbs.freshman.activity.StrategyMainActivity;
@@ -18,7 +19,7 @@ import com.mredrock.cyxbs.freshman.adapter.BaseAdapter;
 import com.mredrock.cyxbs.freshman.data.StrategyData;
 import com.mredrock.cyxbs.freshman.utils.DataTypeManager;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -33,9 +34,26 @@ public class StrategyDetailFragment extends Fragment implements PresenterContrac
     Unbinder unbinder;
     @BindView(R.id.tabLayout)
     TabLayout tabLayout;
-    private ArrayList<StrategyData.Data> list;
     private BaseAdapter adapter = null;
-    private String mflag;
+    private List<StrategyData.ArrayBean> list;
+    ModelStrategy get = new ModelStrategy(new PresenterContractStrategy.callback() {
+        @Override
+        public void loadData(List<StrategyData.ArrayBean> data) {
+            list = data;
+            if (adapter != null) {
+                adapter.refreshItem(list);
+            }
+            adapter = new BaseAdapter(list, DataTypeManager.DataBean.STRATEGY, getContext());
+            recycler.setAdapter(adapter);
+        }
+
+        @Override
+        public void onFailed() {
+            Toast.makeText(getContext(), "数据加载失败", Toast.LENGTH_SHORT).show();
+        }
+    });
+
+
 
     public static StrategyDetailFragment getInstance(String s) {
         StrategyDetailFragment fragment = new StrategyDetailFragment();
@@ -55,6 +73,7 @@ public class StrategyDetailFragment extends Fragment implements PresenterContrac
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
         tabLayout.setVisibility(View.GONE);
         LinearLayoutManager manager = new LinearLayoutManager(getContext());
         manager.setOrientation(LinearLayoutManager.VERTICAL);
@@ -62,26 +81,12 @@ public class StrategyDetailFragment extends Fragment implements PresenterContrac
         Log.e(Tag, "ViewCreated");
         if (this.adapter == null) {
             Log.d(Tag, "bindAdapter");
-            this.list = dataTest(flag);
-            adapter = new BaseAdapter(list, DataTypeManager.DataBean.STRATEGY, getContext());
-            recycler.setAdapter(adapter);
+            get.getData(flag);
         } else {
-            this.list = dataTest(mflag);
+            get.getData(flag);
             Log.d(Tag, "refreshItem");
-            adapter.refreshItem(list);
-        }
-    }
 
-    private ArrayList<StrategyData.Data> dataTest(String s) {
-        ArrayList<StrategyData.Data> data = new ArrayList<>();
-        for (int i = 0; i < 5; i++) {
-            StrategyData.Data bean = new StrategyData.Data();
-            bean.setName(s);
-            bean.setContent("很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长");
-            bean.setId(++i);
-            data.add(bean);
         }
-        return data;
     }
 
     @Override
@@ -90,14 +95,9 @@ public class StrategyDetailFragment extends Fragment implements PresenterContrac
         unbinder.unbind();
     }
 
-    public ArrayList<StrategyData.Data> getList() {
-        dataTest(flag);
-        return this.list;
-    }
-
     @Override
-    public void changeList(String s) {
-        mflag = s;
+    public void addToast(String s) {
+        Toast.makeText(getContext(), "数据加载失败", Toast.LENGTH_SHORT).show();
     }
 
     @Override

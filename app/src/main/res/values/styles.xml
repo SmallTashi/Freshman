@@ -9,6 +9,14 @@
 
     </style>
 
+    <style name="AnimTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowAnimationStyle">@style/activityStyleAnim</item>
+    </style>
+
+    <style name="activityStyleAnim">
+        <item name="android:activityOpenEnterAnimation">@anim/slide_in_right</item>
+        <item name="android:activityOpenExitAnimation">@anim/slide_out_left</item>
+    </style>
     <style name="ActionBarTitleStyle">
         <item name="android:textSize">18sp</item>
     </style>

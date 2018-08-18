@@ -13,7 +13,7 @@ import com.mredrock.cyxbs.freshman.R;
 import com.mredrock.cyxbs.freshman.data.EssentialDataBean;
 import com.mredrock.cyxbs.freshman.essential.PresenterContractEssential;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import static com.mredrock.cyxbs.freshman.activity.EssentialActivity.TAG;
 
@@ -28,13 +28,11 @@ public class EssentialAdapter extends RecyclerView.Adapter<EssentialAdapter.Edit
     private int count = 0;
     private int get = 0;
 
-    private ArrayList<EssentialDataBean> itemList;
+    private List<EssentialDataBean.DescribeBean> itemList;
 
-    public EssentialAdapter(ArrayList<EssentialDataBean> item, RecyclerView recyclerView) {
+    public EssentialAdapter(List<EssentialDataBean.DescribeBean> item) {
         this.itemList = item;
         Log.d(TAG, "initAdapter");
-
-
     }
 
 
@@ -114,7 +112,9 @@ public class EssentialAdapter extends RecyclerView.Adapter<EssentialAdapter.Edit
             holder.button.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    //TODO
+                    if (itemList.get(position).isExpand()) {
+                        //TODO
+                    }
                 }
             });
         }
@@ -138,7 +138,7 @@ public class EssentialAdapter extends RecyclerView.Adapter<EssentialAdapter.Edit
 
     @Override
     public void ItemMove(int fromPosition) {
-        EssentialDataBean s = itemList.get(fromPosition);
+        EssentialDataBean.DescribeBean s = itemList.get(fromPosition);
         if (itemList.get(fromPosition).isGet()) {
             s.setGet(true);
             notifyItemMoved(fromPosition, 0);
@@ -174,7 +174,7 @@ public class EssentialAdapter extends RecyclerView.Adapter<EssentialAdapter.Edit
 
     @Override
     public void addItem(String inputString) {
-        EssentialDataBean dataBean = new EssentialDataBean();
+        EssentialDataBean.DescribeBean dataBean = new EssentialDataBean.DescribeBean();
         dataBean.setName(inputString);
         dataBean.setCustom(true);
         dataBean.setId(itemList.size() + 1);

@@ -21,13 +21,34 @@ import java.util.List;
 public class BaseAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private List<?> data;
     private int mFlag;
-
+    private List<TrainTipsData.DescribeBean> temp;
+    private ArrayList<TrainTipsData.DescribeBean> tipsBeans;
     private Context context;
+    private ArrayList<String> imageUrl;
+    private ArrayList<String> url;
 
     public BaseAdapter(List<?> data, int flag, Context context) {
         this.mFlag = flag;
         this.context = context;
         this.data = data;
+        if (mFlag == DataTypeManager.DataBean.TRAIN_MEDIA_IMAGE) {
+            imageUrl = new ArrayList<>();
+            for (int i = 0; i < data.size(); i++) {
+                imageUrl.add(((TrainMediaData.PictureBean) data.get(i)).getUrl());
+            }
+        }
+        if (mFlag == DataTypeManager.DataBean.TRAIN_TIPS) {
+            tipsBeans = new ArrayList<>();
+            temp = new ArrayList<>();
+            for (int i = 0; i < data.size(); i++) {
+                tipsBeans.add((TrainTipsData.DescribeBean) data.get(i));
+            }
+            tipsBeans.get(1).setProperty(tipsBeans.get(0).getContent());
+            tipsBeans.get(3).setProperty(tipsBeans.get(2).getContent());
+            temp.add(tipsBeans.get(1));
+            temp.add(tipsBeans.get(3));
+            tipsBeans = null;
+        }
     }
 
     @Override
@@ -45,6 +66,9 @@ public class BaseAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             case DataTypeManager.DataBean.TRAIN_MEDIA_VIDEO:
                 v = LayoutInflater.from(parent.getContext()).inflate(R.layout.freshman_train_media_video_item, parent, false);
                 return new BaseViewHolderPool.MediaVideoViewHolder(v);
+            case DataTypeManager.DataBean.TRAIN_MEDIA_IMAGE:
+                v = LayoutInflater.from(parent.getContext()).inflate(R.layout.freshman_train_media_image_item, parent, false);
+                return new BaseViewHolderPool.MediaImageViewHolder(v);
             case DataTypeManager.DataBean.STRATEGY:
                 Log.d(StrategyDetailFragment.Tag, "bindItem");
                 v = LayoutInflater.from(parent.getContext()).inflate(R.layout.strategy_five_item, parent, false);
@@ -58,13 +82,10 @@ public class BaseAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         switch (getItemViewType(position)) {
             case DataTypeManager.DataBean.TRAIN_TIPS:
-                ArrayList<TrainTipsData.TipsBean> tipsBeans = new ArrayList<>();
-                for (int i = 0; i < data.size(); i++) {
-                    tipsBeans.add((TrainTipsData.TipsBean) data.get(i));
-                }
                 BaseViewHolderPool.TipsViewHold tips = (BaseViewHolderPool.TipsViewHold) holder;
-                tips.tipsContent.setText(tipsBeans.get(position).getContent());
-                tips.tipTitle.setText(tipsBeans.get(position).getName());
+                tips.tipsBigTitle.setText("军训纪律");
+                tips.tipsContent.setText(temp.get(position).getContent());
+                tips.tipTitle.setText(temp.get(position).getProperty());
                 break;
             case DataTypeManager.DataBean.TRAIN_MEDIA_VIDEO:
                 ArrayList<TrainMediaData.VideoBean> videoBeans = new ArrayList<>();
@@ -75,10 +96,19 @@ public class BaseAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                 videoImage.mediaName.setText(videoBeans.get(position).getName());
                 Glide.with(context).load(videoBeans.get(position).getUrl()).into(videoImage.mediaImage);
                 break;
-            case DataTypeManager.DataBean.STRATEGY:
-                ArrayList<StrategyData.Data> beans = new ArrayList<>();
+            case DataTypeManager.DataBean.TRAIN_MEDIA_IMAGE:
+                ArrayList<TrainMediaData.PictureBean> imageBeans = new ArrayList<>();
                 for (int i = 0; i < data.size(); i++) {
-                    beans.add((StrategyData.Data) data.get(i));
+                    imageBeans.add((TrainMediaData.PictureBean) data.get(i));
+                }
+                BaseViewHolderPool.MediaImageViewHolder image = (BaseViewHolderPool.MediaImageViewHolder) holder;
+                image.name.setText(imageBeans.get(position).getName());
+//                image.image.setAdapter(new ImagePagerAdapter(context,imageUrl,image.image));
+                break;
+            case DataTypeManager.DataBean.STRATEGY:
+                ArrayList<StrategyData.ArrayBean> beans = new ArrayList<>();
+                for (int i = 0; i < data.size(); i++) {
+                    beans.add((StrategyData.ArrayBean) data.get(i));
                 }
                 BaseViewHolderPool.StrategyViewHolder strategy = (BaseViewHolderPool.StrategyViewHolder) holder;
                 strategy.content.setText(beans.get(position).getContent());
@@ -89,10 +119,13 @@ public class BaseAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     @Override
     public int getItemCount() {
+        if (mFlag == DataTypeManager.DataBean.TRAIN_TIPS) {
+            return data.size() / 2;
+        }
         return data.size();
     }
 
-    public void refreshItem(ArrayList<StrategyData.Data> list) {
+    public void refreshItem(List<StrategyData.ArrayBean> list) {
         this.data = list;
         notifyItemRangeChanged(0, list.size());
     }

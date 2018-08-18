@@ -9,21 +9,26 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.mredrock.cyxbs.freshman.adapter.BaseAdapter;
-import com.mredrock.cyxbs.freshman.adapter.ImagePagerAdapter;
 import com.mredrock.cyxbs.freshman.data.TrainMediaData;
 import com.mredrock.cyxbs.freshman.data.TrainTipsData;
 import com.mredrock.cyxbs.freshman.utils.DataTypeManager;
 import com.mredrock.cyxbs.freshman.utils.TabPagerLoader;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class PresenterTrain implements PresenterContractTrain.loadData {
-
-    private static PresenterContractTrain.get get = new ModelTrain();
+public class PresenterTrain implements PresenterContractTrain.callback, PresenterContractTrain.ItemClickListener {
+    private PresenterContractTrain.get get = new ModelTrain(this);
     private PresenterContractTrain.showTips show;
     private PresenterContractTrain.showMedia media;
     private ViewPager pager;
+    private ViewPager ImagePager;
     private TabLayout tabBar;
+    private RecyclerView TipsRecyclerView;
+    private RecyclerView VideoRecyclerView;
+    private Context ImageContext;
+    private Context context;
+    private Context VideoContext;
 
     PresenterTrain(TrainTipsFragment tips) {
         this.show = tips;
@@ -41,31 +46,22 @@ public class PresenterTrain implements PresenterContractTrain.loadData {
 
     void setTipAdapter(RecyclerView recycler, Context context, TrainTipsFragment tipsFragment) {
         this.show = tipsFragment;
-        BaseAdapter adapter = new BaseAdapter(loadTips(), DataTypeManager.DataBean.TRAIN_TIPS, context);
-        LinearLayoutManager manager = new LinearLayoutManager(context);
-        manager.setOrientation(LinearLayoutManager.VERTICAL);
-        recycler.setLayoutManager(manager);
-        recycler.setAdapter(adapter);
+        this.TipsRecyclerView = recycler;
+        this.context = context;
+        get.loadTips();
     }
 
     void setImageAdapter(ViewPager pager, Context context, TrainMediaFragment mediaFragment) {
         this.media = mediaFragment;
-        ArrayList<String> url = new ArrayList<>();
-        for (TrainMediaData.PictureBean bean :
-                loadImage()) {
-            url.add(bean.getUrl());
-        }
-        ImagePagerAdapter pagerAdapter = new ImagePagerAdapter(context, url, pager);
-        pager.setAdapter(pagerAdapter);
-        pager.addOnPageChangeListener(pagerAdapter);
+        this.ImagePager = pager;
+        this.ImageContext = context;
+        get.loadPic();
     }
 
     void setVideoAdapter(RecyclerView recyclerView, Context context) {
-        LinearLayoutManager manager = new LinearLayoutManager(context);
-        manager.setOrientation(LinearLayoutManager.HORIZONTAL);
-        recyclerView.setLayoutManager(manager);
-        BaseAdapter adapter = new BaseAdapter(loadVideo(), DataTypeManager.DataBean.TRAIN_MEDIA_VIDEO, context);
-        recyclerView.setAdapter(adapter);
+        this.VideoContext = context;
+        this.VideoRecyclerView = recyclerView;
+        get.loadVideo();
     }
 
     public void setUi(FragmentManager manager) {
@@ -79,19 +75,41 @@ public class PresenterTrain implements PresenterContractTrain.loadData {
     }
 
     @Override
-    public ArrayList<TrainMediaData.VideoBean> loadVideo() {
-        return get.loadVideo();
+    public void onFailed() {
+        show.addToast("数据加载失败");
     }
 
     @Override
-    public ArrayList<TrainMediaData.PictureBean> loadImage() {
-
-        return get.loadPic();
+    public void loadVideo(List<TrainMediaData.VideoBean> videoBeans) {
+        LinearLayoutManager manager = new LinearLayoutManager(VideoContext);
+        manager.setOrientation(LinearLayoutManager.HORIZONTAL);
+        VideoRecyclerView.setLayoutManager(manager);
+        BaseAdapter adapter = new BaseAdapter(videoBeans, DataTypeManager.DataBean.TRAIN_MEDIA_VIDEO, VideoContext);
+        VideoRecyclerView.setAdapter(adapter);
     }
 
     @Override
-    public ArrayList<TrainTipsData.TipsBean> loadTips() {
-        get.loadVideo();
-        return get.loadTips();
+    public void loadImage(List<TrainMediaData.PictureBean> images) {
+        ArrayList<String> url = new ArrayList<>();
+        for (int i = 0; i < images.size(); i++) {
+            url.add(images.get(i).getUrl());
+        }
+//        ImagePagerAdapter pagerAdapter = new ImagePagerAdapter(ImageContext, url, ImagePager);
+//        ImagePager.setAdapter(pagerAdapter);
+//        ImagePager.addOnPageChangeListener(pagerAdapter);
+    }
+
+    @Override
+    public void loadTips(List<TrainTipsData.DescribeBean> tipsBeans) {
+        BaseAdapter adapter = new BaseAdapter(tipsBeans, DataTypeManager.DataBean.TRAIN_TIPS, context);
+        LinearLayoutManager manager = new LinearLayoutManager(context);
+        manager.setOrientation(LinearLayoutManager.VERTICAL);
+        TipsRecyclerView.setLayoutManager(manager);
+        TipsRecyclerView.setAdapter(adapter);
+    }
+
+    @Override
+    public void onItemClick(String s) {
+        media.intent(s);
     }
 }

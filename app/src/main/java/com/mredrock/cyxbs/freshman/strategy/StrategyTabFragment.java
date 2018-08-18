@@ -8,24 +8,27 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.mredrock.cyxbs.freshman.R;
 import com.mredrock.cyxbs.freshman.adapter.BaseAdapter;
 import com.mredrock.cyxbs.freshman.data.StrategyData;
 import com.mredrock.cyxbs.freshman.utils.DataTypeManager;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
-public class StrategyTabFragment extends Fragment {
+public class StrategyTabFragment extends Fragment implements PresenterContractStrategy.callback {
 
     @BindView(R.id.strategy_fragment_recycler)
     RecyclerView strategyFragmentRecycler;
     Unbinder unbinder;
     private String flag;
+    List<StrategyData.ArrayBean> list;
+    ModelStrategy get = new ModelStrategy(this);
 
     public static StrategyTabFragment getInstance(String s) {
         StrategyTabFragment f = new StrategyTabFragment();
@@ -47,21 +50,11 @@ public class StrategyTabFragment extends Fragment {
         LinearLayoutManager manager = new LinearLayoutManager(getContext());
         manager.setOrientation(LinearLayoutManager.VERTICAL);
         strategyFragmentRecycler.setLayoutManager(manager);
-        BaseAdapter adapter = new BaseAdapter(dataTest(flag), DataTypeManager.Ui.STRATEGY_DORMITORY, getContext());
+        get.getData(flag);
+        BaseAdapter adapter = new BaseAdapter(list, DataTypeManager.Ui.STRATEGY_DORMITORY, getContext());
         strategyFragmentRecycler.setAdapter(adapter);
     }
 
-    private ArrayList<StrategyData.Data> dataTest(String s) {
-        ArrayList<StrategyData.Data> data = new ArrayList<>();
-        for (int i = 0; i < 5; i++) {
-            StrategyData.Data bean = new StrategyData.Data();
-            bean.setName(s);
-            bean.setContent("很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长");
-            bean.setId(++i);
-            data.add(bean);
-        }
-        return data;
-    }
 
     @Override
     public void onDestroyView() {
@@ -70,4 +63,13 @@ public class StrategyTabFragment extends Fragment {
     }
 
 
+    @Override
+    public void loadData(List<StrategyData.ArrayBean> data) {
+        this.list = data;
+    }
+
+    @Override
+    public void onFailed() {
+        Toast.makeText(getContext(), "数据加载失败", Toast.LENGTH_SHORT).show();
+    }
 }

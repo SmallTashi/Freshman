@@ -1,8 +1,10 @@
 package com.mredrock.cyxbs.freshman.activity;
 
+import android.Manifest;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MotionEvent;
 import android.view.View;
@@ -11,6 +13,8 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.github.dfqin.grantor.PermissionListener;
+import com.github.dfqin.grantor.PermissionsUtil;
 import com.mredrock.cyxbs.freshman.R;
 
 import butterknife.BindView;
@@ -40,7 +44,7 @@ public class BaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        requestPermission();
         //状态栏这部分是从掌邮里拉过来的
         if (Build.VERSION.SDK_INT >= 21) {
             View decorView = getWindow().getDecorView();
@@ -57,5 +61,22 @@ public class BaseActivity extends AppCompatActivity {
         }
     }
 
+    private void requestPermission() {
+        if (PermissionsUtil.hasPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+
+        } else {
+            PermissionsUtil.requestPermission(this, new PermissionListener() {
+                @Override
+                public void permissionGranted(@NonNull String[] permissions) {
+                }
+
+
+                @Override
+                public void permissionDenied(@NonNull String[] permissions) {
+
+                }
+            }, Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        }
+    }
 
 }

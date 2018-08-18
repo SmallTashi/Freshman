@@ -1,7 +1,6 @@
 package com.mredrock.cyxbs.freshman.activity;
 
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -14,7 +13,7 @@ import com.mredrock.cyxbs.freshman.utils.DataTypeManager;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class StrategyMainActivity extends FragmentActivity {
+public class StrategyMainActivity extends BaseActivity {
     public PresenterStrategy p = new PresenterStrategy(getSupportFragmentManager());
     @BindView(R.id.freshman_essential_bar_return)
     ImageView barRetern;
@@ -28,6 +27,7 @@ public class StrategyMainActivity extends FragmentActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_strategy_main);
         ButterKnife.bind(this);
         setBar(DataTypeManager.STRATEGY.TITLE);
@@ -42,7 +42,10 @@ public class StrategyMainActivity extends FragmentActivity {
         barRetern.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getFragmentManager().popBackStack();
+                finish();
+                overridePendingTransition(
+                        android.R.anim.fade_in,
+                        android.R.anim.fade_out);
             }
         });
         barTitle.setText(title);

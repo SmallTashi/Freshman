@@ -4,54 +4,43 @@ import java.util.List;
 
 public class StrategyData {
 
-    public static class Main {
-        /**
-         * amount : 6
-         * name : ["第二教学楼","春华秋实广场","情人坡","数字图书馆","第八教学楼","雨红莲"]
-         * index : 校园环境
-         */
+    /**
+     * array : [{"content":"老校门出门右转，绝味鸭脖旁边","id":1,"name":"中国邮政储蓄银行(黄桷垭支行)","picture":["/picture/42db35024a694c34a00202ab2a458746.jpg"],"property":""},{"content":"新校门出门右转，新世纪超市旁边","id":2,"name":"农业银行","picture":["/picture/434e51d2ff8840a38b13ec0f03c229db.jpg"],"property":""},{"content":"老校门出门，过马路，右转。","id":3,"name":"重庆农村商业银行","picture":["/picture/39dbb66648844e148046c9285b65dd9a.jpg"],"property":""},{"content":"新校门出门，左转直走，老校门出门，右转直走。","id":4,"name":"中国工商银行自助服务点","picture":["/picture/1e61faa0fc544a0f9597edca5554820f.jpg"],"property":""}]
+     * index : 附近银行
+     */
 
-        private int amount;
-        private String index;
-        private List<String> name;
+    private String index;
+    private List<ArrayBean> array;
 
-        public int getAmount() {
-            return amount;
-        }
-
-        public void setAmount(int amount) {
-            this.amount = amount;
-        }
-
-        public String getIndex() {
-            return index;
-        }
-
-        public void setIndex(String index) {
-            this.index = index;
-        }
-
-        public List<String> getName() {
-            return name;
-        }
-
-        public void setName(List<String> name) {
-            this.name = name;
-        }
+    public String getIndex() {
+        return index;
     }
 
+    public void setIndex(String index) {
+        this.index = index;
+    }
 
-    public static class Data {
+    public List<ArrayBean> getArray() {
+        return array;
+    }
+
+    public void setArray(List<ArrayBean> array) {
+        this.array = array;
+    }
+
+    public static class ArrayBean {
         /**
-         * content : 软件工程学院和计算机科学与技术学院所在楼栋。作为上课频率最高的几所楼栋之一的二教，凭着静谧的学习环境和方便的地理位置成为了同学们日常自习的好去处。内含阶梯教室的二教，通常还是各类企业招聘会和宣讲会的不二选址，大部分的学院也会选择这里进行年级集中。
+         * content : 老校门出门右转，绝味鸭脖旁边
          * id : 1
-         * name : 第二教学楼
-         * picture : ["/picture/6d49fcb5e3cd40079b87c4898ff674c2.png"]
+         * name : 中国邮政储蓄银行(黄桷垭支行)
+         * picture : ["/picture/42db35024a694c34a00202ab2a458746.jpg"]
+         * property :
          */
 
         private String content;
         private int id;
         private String name;
+        private String property;
         private List<String> picture;
 
         public String getContent() {
@@ -78,6 +67,14 @@ public class StrategyData {
             this.name = name;
         }
 
+        public String getProperty() {
+            return property;
+        }
+
+        public void setProperty(String property) {
+            this.property = property;
+        }
+
         public List<String> getPicture() {
             return picture;
         }
@@ -86,5 +83,4 @@ public class StrategyData {
             this.picture = picture;
         }
     }
-
 }

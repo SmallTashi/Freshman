@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.mredrock.cyxbs.freshman.R;
 
@@ -32,8 +33,9 @@ public class TrainTipsFragment extends Fragment implements PresenterContractTrai
         super.onDestroyView();
     }
 
-    @Override
-    public void addToast() {
 
+    @Override
+    public void addToast(String s) {
+        Toast.makeText(getContext(), s, Toast.LENGTH_SHORT).show();
     }
 }

@@ -1,6 +1,5 @@
 package com.mredrock.cyxbs.freshman.activity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
@@ -25,6 +24,7 @@ public class TrainingActivity extends BaseActivity {
         setContentView(R.layout.freshman_activity_training);
         ButterKnife.bind(this);
         setBar();
+
         PresenterTrain presenterTrain = new PresenterTrain(pager, tabBar);
         presenterTrain.setUi(getSupportFragmentManager());
     }
@@ -38,9 +38,10 @@ public class TrainingActivity extends BaseActivity {
         leftIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(TrainingActivity.this, TestActivity.class);
-                startActivity(intent);
                 finish();
+                overridePendingTransition(
+                        android.R.anim.fade_in,
+                        android.R.anim.fade_out);
             }
         });
     }

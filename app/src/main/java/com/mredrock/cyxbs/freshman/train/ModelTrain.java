@@ -2,46 +2,85 @@ package com.mredrock.cyxbs.freshman.train;
 
 import com.mredrock.cyxbs.freshman.data.TrainMediaData;
 import com.mredrock.cyxbs.freshman.data.TrainTipsData;
+import com.mredrock.cyxbs.freshman.utils.Api;
+import com.mredrock.cyxbs.freshman.utils.RetrofitManager;
 
-import java.util.ArrayList;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class ModelTrain implements PresenterContractTrain.get {
-    @Override
-    public ArrayList<TrainTipsData.TipsBean> loadTips() {
-        ArrayList<TrainTipsData.TipsBean> data = new ArrayList<>();
-        for (int i = 0; i < 10; i++) {
-            TrainTipsData.TipsBean a = new TrainTipsData.TipsBean();
-            a.setName("军训贴士");
-            a.setContent("1.军训期间请假遵守一事一请假的原则，无特 殊事由不得请假； " +
-                    "2.学生在军训场上感到不适，可直接通过“打 报告的形式直接向…… " +
-                    "3.军训期间请假遵守一事一请假的原则，无特 殊事由不得请假； " +
-                    "4.学生在军训场上感到不适，可直接通过“打 报告的形式直接向…… " +
-                    "5.军训期间请假遵守一事一请假的原则，无特 殊事由不得请假； " +
-                    "6.学生在军训场上感到不适，可直接通过“打 报告的形式直接向……");
-            data.add(a);
+    public static final int Video = 1;
+    public static final int image = 2;
+    private PresenterContractTrain.callback callback;
+    private Api api = RetrofitManager.get();
+
+    public ModelTrain(PresenterContractTrain.callback callback) {
+        this.callback = callback;
+    }
+
+    private void getTips() {
+
+        Call<TrainTipsData> tips = api.getTips("军训小贴士");
+        tips.enqueue(new Callback<TrainTipsData>() {
+            @Override
+            public void onResponse(Call<TrainTipsData> call, Response<TrainTipsData> response) {
+                callback.loadTips(response.body().getDescribe());
+            }
+
+            @Override
+            public void onFailure(Call<TrainTipsData> call, Throwable t) {
+                callback.onFailed();
+            }
+        });
+    }
+
+    void getMedia(int flag) {
+        Call<TrainMediaData> bean = this.api.getTrainMedia();
+        switch (flag) {
+
+            case Video:
+
+                bean.enqueue(new Callback<TrainMediaData>() {
+                    @Override
+                    public void onResponse(Call<TrainMediaData> call, Response<TrainMediaData> response) {
+                        callback.loadVideo(response.body().getVideo());
+                    }
+
+                    @Override
+                    public void onFailure(Call<TrainMediaData> call, Throwable t) {
+                        callback.onFailed();
+                    }
+                });
+                break;
+            case image:
+                bean.enqueue(new Callback<TrainMediaData>() {
+                    @Override
+                    public void onResponse(Call<TrainMediaData> call, Response<TrainMediaData> response) {
+                        callback.loadImage(response.body().getPicture());
+                    }
+
+                    @Override
+                    public void onFailure(Call<TrainMediaData> call, Throwable t) {
+                        callback.onFailed();
+                    }
+                });
+                break;
         }
-        return data;
     }
 
     @Override
-    public ArrayList<TrainMediaData.PictureBean> loadPic() {
-        ArrayList<TrainMediaData.PictureBean> beans = new ArrayList<>();
-        for (int i = 0; i < 10; i++) {
-            TrainMediaData.PictureBean l = new TrainMediaData.PictureBean();
-            l.setUrl("https://ww1.sinaimg.cn/large/0073sXn7ly1fubd7e0lb7g304e04rati");
-            l.setName("gank.io");
-        }
-        return beans;
+    public void loadTips() {
+        getTips();
     }
 
     @Override
-    public ArrayList<TrainMediaData.VideoBean> loadVideo() {
-        ArrayList<TrainMediaData.VideoBean> data = new ArrayList<>();
-        for (int i = 0; i < 10; i++) {
-            TrainMediaData.VideoBean d = new TrainMediaData.VideoBean();
-            d.setName("123123123123321");
-            data.add(d);
-        }
-        return data;
+    public void loadPic() {
+        getMedia(image);
+    }
+
+    @Override
+    public void loadVideo() {
+        getMedia(Video);
     }
 }

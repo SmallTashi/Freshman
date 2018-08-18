@@ -4,7 +4,7 @@ import android.app.Dialog;
 
 import com.mredrock.cyxbs.freshman.data.EssentialDataBean;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public interface PresenterContractEssential {
 
@@ -26,10 +26,16 @@ public interface PresenterContractEssential {
     interface ViewShow {
         void ShowDialog(Dialog dialog);
 
+        void addToast(String s);
     }
 
     interface DataProvider {
-        ArrayList<EssentialDataBean> get(int count);
+        void get();
+    }
 
+    interface callback {
+        void loadData(List<EssentialDataBean.DescribeBean> data);
+
+        void onFailed(String s);
     }
 }
