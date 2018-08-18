@@ -69,6 +69,8 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
+            android:background="@drawable/ripper_drawable"
+
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
@@ -111,6 +113,8 @@
         app:radius="6dp">
 
         <LinearLayout
+            android:background="@drawable/ripper_drawable"
+
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
@@ -155,6 +159,8 @@
         app:radius="6dp">
 
         <LinearLayout
+            android:background="@drawable/ripper_drawable"
+
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
@@ -200,6 +206,8 @@
         app:radius="6dp">
 
         <LinearLayout
+            android:background="@drawable/ripper_drawable"
+
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
@@ -245,6 +253,8 @@
         app:radius="6dp">
 
         <LinearLayout
+            android:background="@drawable/ripper_drawable"
+
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
@@ -286,6 +296,8 @@
         app:radius="6dp">
 
         <LinearLayout
+            android:background="@drawable/ripper_drawable"
+
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
@@ -327,6 +339,8 @@
         app:radius="6dp">
 
         <LinearLayout
+            android:background="@drawable/ripper_drawable"
+
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
@@ -371,6 +385,8 @@
         app:radius="6dp">
 
         <LinearLayout
+            android:background="@drawable/ripper_drawable"
+
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
